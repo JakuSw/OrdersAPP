@@ -14,15 +14,19 @@ namespace CRM
 {
     public partial class AddClient : Form
     {
+
+
+        int editLine = 0;
+        Client workClient = new Client();
         public AddClient()
         {
             InitializeComponent();
-        }
-        private bool fileExist()
-        {
-            return File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv");
-        }
+            nameBox.Text = workClient.Name;
+            nipBox.Text = workClient.Nip;
+            phoneBox.Text = workClient.Phone;
+            locationBox.Text = workClient.Location;
 
+        }
         private bool isInFile(string niptocheck)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + @"\data.csv";
@@ -34,7 +38,6 @@ namespace CRM
                 {
                     if(column.Equals(niptocheck))
                     {
-                        MessageBox.Show(column);
                         return true;
                     }
                 }
@@ -44,14 +47,17 @@ namespace CRM
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addBtn_Click(object sender, EventArgs e)
         {
-            if(fileExist())
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
             {
                 if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "" && isInFile(nipBox.Text) == false)
                 {
-                    Client newClient = new Client() { Name = nameBox.Text, Nip = nipBox.Text, Phone = phoneBox.Text, Location = locationBox.Text };
-                    string csv = string.Format("{0},{1},{2},{3}\n", newClient.Name, newClient.Nip, newClient.Phone, newClient.Location);
+                    workClient.Name = nameBox.Text;
+                    workClient.Nip = nipBox.Text;
+                    workClient.Phone = phoneBox.Text;
+                    workClient.Location = locationBox.Text;
+                    string csv = string.Format("{0},{1},{2},{3}\n", workClient.Name, workClient.Nip, workClient.Phone, workClient.Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
                     MessageBox.Show("Client added to database");
 
@@ -69,8 +75,11 @@ namespace CRM
             {
                 if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "")
                 {
-                    Client newClient = new Client() { Name = nameBox.Text, Nip = nipBox.Text, Phone = phoneBox.Text, Location = locationBox.Text };
-                    string csv = string.Format("{0},{1},{2},{3}\n", newClient.Name, newClient.Nip, newClient.Phone, newClient.Location);
+                    workClient.Name = nameBox.Text;
+                    workClient.Nip = nipBox.Text;
+                    workClient.Phone = phoneBox.Text;
+                    workClient.Location = locationBox.Text;
+                    string csv = string.Format("{0},{1},{2},{3}\n", workClient.Name, workClient.Nip, workClient.Phone, workClient.Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
                 }
                 else
@@ -84,6 +93,39 @@ namespace CRM
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void editBtn_Click(object sender, EventArgs e)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"\data.csv";
+            string[] lines = System.IO.File.ReadAllLines(path);
+            foreach (string line in lines)
+            {
+                string[] columns = line.Split(',');
+                if(columns[1] == nipBox.Text)
+                {
+                    nameBox.Text = columns[0];
+                    nipBox.Text = columns[1];
+                    phoneBox.Text = columns[2];
+                    locationBox.Text = columns[3];
+                    saveBtn.Enabled = true;
+                    saveBtn.Visible = true;
+                    addBtn.Enabled = false;
+                    addBtn.Visible = false;
+                    break;
+                }
+                editLine++;
+
+
+            }
+
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            workClient.EditClient(nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
+
+
         }
     }
 }

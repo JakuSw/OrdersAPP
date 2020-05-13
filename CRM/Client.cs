@@ -39,7 +39,28 @@ namespace CRM
             get { return location; }
             set { location = value; }
         }
+        public Client()
+        {
+            name = null;
+            nip = null;
+            phone = null;
+            location = null;
+        }
+        public Client(string name_, string nip_, string phone_, string location_)
+        {
+            name = name_;
+            nip = nip_;
+            phone = phone_;
+            location = location_;
+        }
 
+        public void EditClient(string name_, string nip_, string phone_, string location_)
+        {
+            name = name_;
+            nip = nip_;
+            phone = phone_;
+            location = location_;
+        }
 
     }
 }

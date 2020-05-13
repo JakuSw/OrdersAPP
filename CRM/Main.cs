@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace CRM
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
-            List<Client> ClientList = new List<Client>();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AddClientBtn_Click(object sender, EventArgs e)
         {
-            AddClient addWindow = new AddClient();
-            addWindow.Show();
+            AddClient addClientWindow = new AddClient();
+            addClientWindow.Show();
         }
+
     }
 }

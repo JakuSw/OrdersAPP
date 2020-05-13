@@ -38,9 +38,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.addBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.editBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nameBox
@@ -112,26 +114,6 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Phone";
             // 
-            // addBtn
-            // 
-            this.addBtn.Location = new System.Drawing.Point(432, 127);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(75, 23);
-            this.addBtn.TabIndex = 8;
-            this.addBtn.Text = "Add";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // exitBtn
-            // 
-            this.exitBtn.Location = new System.Drawing.Point(513, 127);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(75, 23);
-            this.exitBtn.TabIndex = 9;
-            this.exitBtn.Text = "Exit";
-            this.exitBtn.UseVisualStyleBackColor = true;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -141,14 +123,74 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Add a new customer";
             // 
+            // addBtn
+            // 
+            this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBtn.Location = new System.Drawing.Point(376, 127);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(59, 23);
+            this.addBtn.TabIndex = 11;
+            this.addBtn.TabStop = false;
+            this.addBtn.Text = "Add";
+            this.addBtn.UseVisualStyleBackColor = false;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // exitBtn
+            // 
+            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitBtn.Location = new System.Drawing.Point(527, 127);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(59, 23);
+            this.exitBtn.TabIndex = 12;
+            this.exitBtn.TabStop = false;
+            this.exitBtn.Text = "Exit";
+            this.exitBtn.UseVisualStyleBackColor = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            // 
+            // editBtn
+            // 
+            this.editBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editBtn.Location = new System.Drawing.Point(453, 127);
+            this.editBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(59, 23);
+            this.editBtn.TabIndex = 13;
+            this.editBtn.TabStop = false;
+            this.editBtn.Text = "Edit";
+            this.editBtn.UseVisualStyleBackColor = false;
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.saveBtn.Enabled = false;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Location = new System.Drawing.Point(299, 127);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(59, 23);
+            this.saveBtn.TabIndex = 14;
+            this.saveBtn.TabStop = false;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Visible = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 172);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.saveBtn);
+            this.Controls.Add(this.editBtn);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.addBtn);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -175,8 +217,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button exitBtn;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button editBtn;
+        private System.Windows.Forms.Button saveBtn;
     }
 }
