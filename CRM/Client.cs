@@ -8,6 +8,15 @@ namespace CRM
 {
     class Client
     {
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+
         private string name;
 
         public string Name
@@ -41,23 +50,24 @@ namespace CRM
         }
         public Client()
         {
+            id = 0;
             name = null;
             nip = null;
             phone = null;
             location = null;
         }
-        public Client(string name_, string nip_, string phone_, string location_)
+        public Client(int id_, string name_, string nip_, string phone_, string location_)
         {
+            id = id_;
             name = name_;
             nip = nip_;
             phone = phone_;
             location = location_;
         }
 
-        public void EditClient(string name_, string nip_, string phone_, string location_)
+        public void EditClient(string name_, string phone_, string location_)
         {
             name = name_;
-            nip = nip_;
             phone = phone_;
             location = location_;
         }

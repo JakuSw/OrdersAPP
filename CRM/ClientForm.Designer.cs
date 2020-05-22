@@ -43,6 +43,8 @@
             this.exitBtn = new System.Windows.Forms.Button();
             this.editBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nameBox
@@ -181,12 +183,31 @@
             this.saveBtn.Visible = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
+            // idLabel
+            // 
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(50, 132);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(0, 13);
+            this.idLabel.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 132);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(21, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "ID:";
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(226)))));
             this.ClientSize = new System.Drawing.Size(620, 172);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.idLabel);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.editBtn);
             this.Controls.Add(this.exitBtn);
@@ -223,5 +244,7 @@
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.Label label6;
     }
 }
