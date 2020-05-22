@@ -1,6 +1,6 @@
 ﻿namespace CRM
 {
-    partial class AddClient
+    partial class ClientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -119,9 +119,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(266, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 13);
+            this.label5.Size = new System.Drawing.Size(92, 13);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Add a new customer";
+            this.label5.Text = "Client informations";
             // 
             // addBtn
             // 
@@ -181,10 +181,11 @@
             this.saveBtn.Visible = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // AddClient
+            // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(226)))));
             this.ClientSize = new System.Drawing.Size(620, 172);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.editBtn);
@@ -199,8 +200,8 @@
             this.Controls.Add(this.phoneBox);
             this.Controls.Add(this.nipBox);
             this.Controls.Add(this.nameBox);
-            this.Name = "AddClient";
-            this.Text = "AddClient";
+            this.Name = "ClientForm";
+            this.Text = "Client";
             this.ResumeLayout(false);
             this.PerformLayout();
 

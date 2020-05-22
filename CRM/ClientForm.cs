@@ -12,13 +12,10 @@ using System.IO;
 
 namespace CRM
 {
-    public partial class AddClient : Form
+    public partial class ClientForm : Form
     {
-
-
-        int editLine = 0;
         Client workClient = new Client();
-        public AddClient()
+        public ClientForm()
         {
             InitializeComponent();
             nameBox.Text = workClient.Name;
@@ -81,6 +78,8 @@ namespace CRM
                     workClient.Location = locationBox.Text;
                     string csv = string.Format("{0},{1},{2},{3}\n", workClient.Name, workClient.Nip, workClient.Phone, workClient.Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
+                    MessageBox.Show("Client added to database");
+
                 }
                 else
                 {
@@ -97,34 +96,65 @@ namespace CRM
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"\data.csv";
-            string[] lines = System.IO.File.ReadAllLines(path);
-            foreach (string line in lines)
+            if(File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
             {
-                string[] columns = line.Split(',');
-                if(columns[1] == nipBox.Text)
+                if (isInFile(nipBox.Text))
                 {
-                    nameBox.Text = columns[0];
-                    nipBox.Text = columns[1];
-                    phoneBox.Text = columns[2];
-                    locationBox.Text = columns[3];
-                    saveBtn.Enabled = true;
-                    saveBtn.Visible = true;
-                    addBtn.Enabled = false;
-                    addBtn.Visible = false;
-                    break;
+                    string path = AppDomain.CurrentDomain.BaseDirectory + @"\data.csv";
+                    string[] lines = System.IO.File.ReadAllLines(path);
+                    foreach (string line in lines)
+                    {
+                        string[] columns = line.Split(',');
+                        if (columns[1] == nipBox.Text)
+                        {
+                            nameBox.Text = columns[0];
+                            nipBox.Text = columns[1];
+                            phoneBox.Text = columns[2];
+                            locationBox.Text = columns[3];
+                            saveBtn.Enabled = true;
+                            saveBtn.Visible = true;
+                            addBtn.Enabled = false;
+                            addBtn.Visible = false;
+                            nipBox.Enabled = false;                     
+                            break;
+                        }
+
+                    }
                 }
-                editLine++;
-
-
+                else
+                {
+                    MessageBox.Show("There is no client in database with this NIP");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Database is empty");
             }
 
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            string csv;
             workClient.EditClient(nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"\data.csv";
+            string[] lines = System.IO.File.ReadAllLines(path);
+            foreach (string line in lines)
+            {
+                string[] columns = line.Split(',');
+                if (columns[1] != nipBox.Text)
+                {
+                    csv = string.Format("{0},{1},{2},{3}\n", columns[0], columns[1], columns[2], columns[3]);
+                    File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);
+                 }
+                
 
+            }
+            csv = string.Format("{0},{1},{2},{3}\n", workClient.Name, workClient.Nip, workClient.Phone, workClient.Location);
+            File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);
+            File.Replace(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", AppDomain.CurrentDomain.BaseDirectory + @"\databackup.csv");
+
+            MessageBox.Show("Database updated");
 
         }
     }

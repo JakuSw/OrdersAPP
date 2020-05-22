@@ -53,7 +53,7 @@
             this.ClientSize = new System.Drawing.Size(1128, 476);
             this.Controls.Add(this.AddClientBtn);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "CRM";
             this.ResumeLayout(false);
 
         }

@@ -19,7 +19,7 @@ namespace CRM
 
         private void AddClientBtn_Click(object sender, EventArgs e)
         {
-            AddClient addClientWindow = new AddClient();
+            ClientForm addClientWindow = new ClientForm();
             addClientWindow.Show();
         }
 
