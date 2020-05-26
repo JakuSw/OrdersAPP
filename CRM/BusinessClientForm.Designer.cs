@@ -1,6 +1,6 @@
 ﻿namespace CRM
 {
-    partial class ClientForm
+    partial class BusinessClientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.nipBox = new System.Windows.Forms.TextBox();
             this.phoneBox = new System.Windows.Forms.TextBox();
             this.locationBox = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +43,7 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.idLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.delBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nameBox
@@ -74,11 +73,6 @@
             this.locationBox.Name = "locationBox";
             this.locationBox.Size = new System.Drawing.Size(210, 20);
             this.locationBox.TabIndex = 3;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // label1
             // 
@@ -129,7 +123,7 @@
             // 
             this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
             this.addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addBtn.Location = new System.Drawing.Point(376, 127);
+            this.addBtn.Location = new System.Drawing.Point(299, 127);
             this.addBtn.Margin = new System.Windows.Forms.Padding(0);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(59, 23);
@@ -157,7 +151,7 @@
             // 
             this.editBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
             this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editBtn.Location = new System.Drawing.Point(453, 127);
+            this.editBtn.Location = new System.Drawing.Point(376, 127);
             this.editBtn.Margin = new System.Windows.Forms.Padding(0);
             this.editBtn.Name = "editBtn";
             this.editBtn.Size = new System.Drawing.Size(59, 23);
@@ -172,7 +166,7 @@
             this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
             this.saveBtn.Enabled = false;
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveBtn.Location = new System.Drawing.Point(299, 127);
+            this.saveBtn.Location = new System.Drawing.Point(222, 127);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(0);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(59, 23);
@@ -200,12 +194,27 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "ID:";
             // 
+            // delBtn
+            // 
+            this.delBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.delBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delBtn.Location = new System.Drawing.Point(453, 127);
+            this.delBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.delBtn.Name = "delBtn";
+            this.delBtn.Size = new System.Drawing.Size(59, 23);
+            this.delBtn.TabIndex = 17;
+            this.delBtn.TabStop = false;
+            this.delBtn.Text = "Delete";
+            this.delBtn.UseVisualStyleBackColor = false;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(620, 172);
+            this.ClientSize = new System.Drawing.Size(620, 170);
+            this.Controls.Add(this.delBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.saveBtn);
@@ -234,7 +243,6 @@
         private System.Windows.Forms.TextBox nipBox;
         private System.Windows.Forms.TextBox phoneBox;
         private System.Windows.Forms.TextBox locationBox;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -246,5 +254,6 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button delBtn;
     }
 }

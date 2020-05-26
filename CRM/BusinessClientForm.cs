@@ -12,11 +12,11 @@ using System.IO;
 
 namespace CRM
 {
-    public partial class ClientForm : Form
+    public partial class BusinessClientForm : Form
     {
-        List<Client> ClientsList = new List<Client>();
+        List<BusinessClient> ClientsList = new List<BusinessClient>();
 
-        public ClientForm()
+        public BusinessClientForm()
         {
             InitializeComponent();
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
@@ -28,8 +28,9 @@ namespace CRM
                     foreach (string line in lines)
                     {
                         string[] columns = line.Split(',');
-                        ClientsList.Add(new Client(int.Parse(columns[0]), columns[1], columns[2], columns[3], columns[4]));
-                    }  
+                        ClientsList.Add(new BusinessClient(int.Parse(columns[0]), columns[1], columns[2], columns[3], columns[4]));
+
+                    }
                 }
                 else
                 {
@@ -41,6 +42,7 @@ namespace CRM
             {
                 MessageBox.Show("Missing file with clients");
             }
+
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -49,10 +51,11 @@ namespace CRM
             {
                 if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "" && ClientsList.Exists(x => x.Nip == nipBox.Text) == false)
                 {
-                    ClientsList.Add(new Client(ClientsList.Count + 1, nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
+                    ClientsList.Add(new BusinessClient(ClientsList.Count + 1, nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
                     string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
                     MessageBox.Show("Client added to database");
+                    ClientsList[ClientsList.Count-1].ShowData();
                     nameBox.Text = "";
                     nipBox.Text = "";
                     phoneBox.Text = "";
@@ -71,10 +74,10 @@ namespace CRM
             {
                 if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "")
                 {
-                    ClientsList.Add(new Client((ClientsList.Count + 1), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
+                    ClientsList.Add(new BusinessClient((ClientsList.Count + 1), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
                     string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
-                    MessageBox.Show("Client added to database");
+                    MessageBox.Show("Client added to database");                    
                     nameBox.Text = "";
                     nipBox.Text = "";
                     phoneBox.Text = "";
@@ -136,7 +139,7 @@ namespace CRM
             {
                 if (item.Nip == nipBox.Text)
                 {
-                    item.EditClient(nameBox.Text, phoneBox.Text, locationBox.Text);
+                    item.Edit(nameBox.Text, phoneBox.Text, locationBox.Text);
                     csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Nip, item.Phone, item.Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);  
                 }
@@ -158,6 +161,32 @@ namespace CRM
             addBtn.Enabled = true;
             addBtn.Visible = true;
             nipBox.Enabled = true;                        
+        }
+
+        private void delBtn_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
+            {
+                if (ClientsList.Exists(x => x.Nip == nipBox.Text))
+                {
+                    var clientToRemove = ClientsList.Single(x => x.Nip == nipBox.Text);
+                    ClientsList.Remove(clientToRemove);
+                    string csv;
+                    foreach (var item in ClientsList)
+                    {
+                        csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Nip, item.Phone, item.Location);
+                        File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);
+                    }
+                    File.Replace(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", AppDomain.CurrentDomain.BaseDirectory + @"\databackup.csv");
+                    MessageBox.Show("Client ");
+                    nipBox.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Cleint do not exist in database");
+                }
+
+            }
         }
     }
 }

@@ -17,10 +17,10 @@ namespace CRM
             InitializeComponent();
         }
 
-        private void AddClientBtn_Click(object sender, EventArgs e)
+        private void BClientBtn_Click(object sender, EventArgs e)
         {
-            ClientForm addClientWindow = new ClientForm();
-            addClientWindow.Show();
+            BusinessClientForm ClientWindow = new BusinessClientForm();
+            ClientWindow.Show();
         }
 
     }

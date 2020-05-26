@@ -28,22 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.AddClientBtn = new System.Windows.Forms.Button();
+            this.BClientBtn = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.PClientBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // AddClientBtn
+            // BClientBtn
             // 
-            this.AddClientBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
-            this.AddClientBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddClientBtn.Location = new System.Drawing.Point(12, 12);
-            this.AddClientBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.AddClientBtn.Name = "AddClientBtn";
-            this.AddClientBtn.Size = new System.Drawing.Size(118, 23);
-            this.AddClientBtn.TabIndex = 0;
-            this.AddClientBtn.TabStop = false;
-            this.AddClientBtn.Text = "Client";
-            this.AddClientBtn.UseVisualStyleBackColor = false;
-            this.AddClientBtn.Click += new System.EventHandler(this.AddClientBtn_Click);
+            this.BClientBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.BClientBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BClientBtn.Location = new System.Drawing.Point(12, 12);
+            this.BClientBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.BClientBtn.Name = "BClientBtn";
+            this.BClientBtn.Size = new System.Drawing.Size(118, 23);
+            this.BClientBtn.TabIndex = 0;
+            this.BClientBtn.TabStop = false;
+            this.BClientBtn.Text = "Business customer";
+            this.BClientBtn.UseVisualStyleBackColor = false;
+            this.BClientBtn.Click += new System.EventHandler(this.BClientBtn_Click);
+            // 
+            // PClientBtn
+            // 
+            this.PClientBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.PClientBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PClientBtn.Location = new System.Drawing.Point(145, 12);
+            this.PClientBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.PClientBtn.Name = "PClientBtn";
+            this.PClientBtn.Size = new System.Drawing.Size(118, 23);
+            this.PClientBtn.TabIndex = 2;
+            this.PClientBtn.TabStop = false;
+            this.PClientBtn.Text = "Individual customer";
+            this.PClientBtn.UseVisualStyleBackColor = false;
             // 
             // Main
             // 
@@ -51,7 +66,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(226)))));
             this.ClientSize = new System.Drawing.Size(1128, 476);
-            this.Controls.Add(this.AddClientBtn);
+            this.Controls.Add(this.PClientBtn);
+            this.Controls.Add(this.BClientBtn);
             this.Name = "Main";
             this.Text = "CRM";
             this.ResumeLayout(false);
@@ -60,7 +76,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button AddClientBtn;
+        private System.Windows.Forms.Button BClientBtn;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button PClientBtn;
     }
 }
 
