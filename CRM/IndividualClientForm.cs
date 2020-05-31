@@ -13,10 +13,10 @@ using System.IO;
 namespace CRM
 {
 
-    public partial class BusinessClientForm : Form
+    public partial class IndividualClientForm : Form
     {
-        List<BusinessClient> ClientsList = new List<BusinessClient>();
-        public BusinessClientForm()
+        List<IndividualClient> ClientsList = new List<IndividualClient>();
+        public IndividualClientForm()
         {
             InitializeComponent();
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
@@ -28,9 +28,9 @@ namespace CRM
                     foreach (string line in lines)
                     {
                         string[] columns = line.Split(',');
-                        ClientsList.Add(new BusinessClient(int.Parse(columns[0]), columns[1], columns[2], columns[3], columns[4]));                        
+                        ClientsList.Add(new IndividualClient(int.Parse(columns[0]), columns[1], columns[2], columns[3], columns[4]));                        
                     }
-                    businessClientBindingSource.DataSource = ClientsList;
+                    individualClientBindingSource.DataSource = ClientsList;
                 }
                 else
                 {
@@ -49,21 +49,21 @@ namespace CRM
         {
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
             {
-                if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "" && ClientsList.Exists(x => x.Nip == nipBox.Text) == false)
+                if (nameBox.Text != "" && peselBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "" && ClientsList.Exists(x => x.Pesel == peselBox.Text) == false)
                 {
-                    ClientsList.Add(new BusinessClient(ClientsList.Count + 1, nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
-                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
+                    ClientsList.Add(new IndividualClient(ClientsList.Count + 1, nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text));
+                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
                     MessageBox.Show("Client added to database");
                     ClientsList[ClientsList.Count-1].ShowData();
                     nameBox.Text = "";
-                    nipBox.Text = "";
+                    peselBox.Text = "";
                     phoneBox.Text = "";
                     locationBox.Text = "";
                 }
-                else if (ClientsList.Exists(x => x.Nip == nipBox.Text) == true)
+                else if (ClientsList.Exists(x => x.Pesel == peselBox.Text) == true)
                 {
-                    MessageBox.Show("This NIP is already in database");
+                    MessageBox.Show("This Pesel is already in database");
                 }
                 else
                 {
@@ -72,14 +72,14 @@ namespace CRM
             }
             else
             {
-                if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "")
+                if (nameBox.Text != "" && peselBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "")
                 {
-                    ClientsList.Add(new BusinessClient((ClientsList.Count + 1), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
-                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
+                    ClientsList.Add(new IndividualClient((ClientsList.Count + 1), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text));
+                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
                     MessageBox.Show("Client added to database");                    
                     nameBox.Text = "";
-                    nipBox.Text = "";
+                    peselBox.Text = "";
                     phoneBox.Text = "";
                     locationBox.Text = "";
 
@@ -106,15 +106,15 @@ namespace CRM
             string csv;
             foreach (var item in ClientsList)
             {
-                if (item.Nip == nipBox.Text)
+                if (item.Pesel == peselBox.Text)
                 {
                     item.Edit(nameBox.Text, phoneBox.Text, locationBox.Text);
-                    csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Nip, item.Phone, item.Location);
+                    csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Pesel, item.Phone, item.Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);  
                 }
                 else
                 {
-                    csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Nip, item.Phone, item.Location);
+                    csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Pesel, item.Phone, item.Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);
                 }
             }
@@ -124,30 +124,30 @@ namespace CRM
             ClientDataGridView1.DataSource = source;
 
             nameBox.Text = "";
-            nipBox.Text = "";
+            peselBox.Text = "";
             phoneBox.Text = "";
             locationBox.Text = "";
             idLabel.Text = "";
-            nipBox.Enabled = true;
+            peselBox.Enabled = true;
         }
 
         private void delBtn_Click(object sender, EventArgs e)
         {
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
             {
-                if (ClientsList.Exists(x => x.Nip == nipBox.Text))
+                if (ClientsList.Exists(x => x.Pesel == peselBox.Text))
                 {
-                    var clientToRemove = ClientsList.Single(x => x.Nip == nipBox.Text);
+                    var clientToRemove = ClientsList.Single(x => x.Pesel == peselBox.Text);
                     ClientsList.Remove(clientToRemove);
                     string csv;
                     foreach (var item in ClientsList)
                     {
-                        csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Nip, item.Phone, item.Location);
+                        csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Pesel, item.Phone, item.Location);
                         File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);
                     }
                     File.Replace(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", AppDomain.CurrentDomain.BaseDirectory + @"\databackup.csv");
                     MessageBox.Show("Client ");
-                    nipBox.Text = "";
+                    peselBox.Text = "";
                 }
                 else
                 {
@@ -158,11 +158,11 @@ namespace CRM
             var source = new BindingSource(ClientsList, null);
             ClientDataGridView1.DataSource = source;
             nameBox.Text = "";
-            nipBox.Text = "";
+            peselBox.Text = "";
             phoneBox.Text = "";
             locationBox.Text = "";
             idLabel.Text = "";
-            nipBox.Enabled = true;
+            peselBox.Enabled = true;
         }
 
         private void ClientDataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -173,11 +173,11 @@ namespace CRM
             {
                 var client = ClientsList[index];
                 nameBox.Text = client.Name;
-                nipBox.Text = client.Nip;
+                peselBox.Text = client.Pesel;
                 phoneBox.Text = client.Phone;
                 locationBox.Text = client.Location;
                 idLabel.Text = client.Id.ToString();
-                nipBox.Enabled = false;
+                peselBox.Enabled = false;
 
             }
 
@@ -187,11 +187,11 @@ namespace CRM
         private void clearBtn_Click(object sender, EventArgs e)
         {
             nameBox.Text = "";
-            nipBox.Text = "";
+            peselBox.Text = "";
             phoneBox.Text = "";
             locationBox.Text = "";
             idLabel.Text = "";
-            nipBox.Enabled = true;
+            peselBox.Enabled = true;
 
         }
     }

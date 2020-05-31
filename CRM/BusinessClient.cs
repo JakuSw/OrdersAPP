@@ -33,8 +33,7 @@ namespace CRM
 
         }
 
-        public void Edit(string name_, string phone_, string location_)
-        {
+        public void Edit(string name_, string phone_, string location_)        {
             this.Name = name_;
             this.Phone = phone_;
             this.Location = location_;

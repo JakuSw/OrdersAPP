@@ -59,13 +59,14 @@
             this.PClientBtn.TabStop = false;
             this.PClientBtn.Text = "Individual customer";
             this.PClientBtn.UseVisualStyleBackColor = false;
+            this.PClientBtn.Click += new System.EventHandler(this.PClientBtn_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1128, 476);
+            this.ClientSize = new System.Drawing.Size(776, 413);
             this.Controls.Add(this.PClientBtn);
             this.Controls.Add(this.BClientBtn);
             this.Name = "Main";

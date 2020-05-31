@@ -23,5 +23,10 @@ namespace CRM
             ClientWindow.Show();
         }
 
+        private void PClientBtn_Click(object sender, EventArgs e)
+        {
+            IndividualClientForm ClientWindow = new IndividualClientForm();
+            ClientWindow.Show();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CRM
 {
-    partial class BusinessClientForm
+    partial class IndividualClientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.nameBox = new System.Windows.Forms.TextBox();
-            this.nipBox = new System.Windows.Forms.TextBox();
+            this.peselBox = new System.Windows.Forms.TextBox();
             this.phoneBox = new System.Windows.Forms.TextBox();
             this.locationBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,15 +45,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.delBtn = new System.Windows.Forms.Button();
             this.ClientDataGridView1 = new System.Windows.Forms.DataGridView();
-            this.businessClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clearBtn = new System.Windows.Forms.Button();
+            this.individualClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PESEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ClientDataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessClientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.individualClientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nameBox
@@ -63,12 +63,12 @@
             this.nameBox.Size = new System.Drawing.Size(210, 20);
             this.nameBox.TabIndex = 0;
             // 
-            // nipBox
+            // peselBox
             // 
-            this.nipBox.Location = new System.Drawing.Point(376, 36);
-            this.nipBox.Name = "nipBox";
-            this.nipBox.Size = new System.Drawing.Size(210, 20);
-            this.nipBox.TabIndex = 1;
+            this.peselBox.Location = new System.Drawing.Point(376, 36);
+            this.peselBox.Name = "peselBox";
+            this.peselBox.Size = new System.Drawing.Size(210, 20);
+            this.peselBox.TabIndex = 1;
             // 
             // phoneBox
             // 
@@ -98,9 +98,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(323, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 13);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "NIP";
+            this.label2.Text = "PESEL";
             // 
             // label3
             // 
@@ -213,18 +213,14 @@
             this.nameDataGridViewTextBoxColumn,
             this.phoneDataGridViewTextBoxColumn,
             this.locationDataGridViewTextBoxColumn,
-            this.nipDataGridViewTextBoxColumn});
-            this.ClientDataGridView1.DataSource = this.businessClientBindingSource;
+            this.PESEL});
+            this.ClientDataGridView1.DataSource = this.individualClientBindingSource;
             this.ClientDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ClientDataGridView1.Location = new System.Drawing.Point(35, 190);
             this.ClientDataGridView1.Name = "ClientDataGridView1";
             this.ClientDataGridView1.Size = new System.Drawing.Size(563, 177);
             this.ClientDataGridView1.TabIndex = 18;
             this.ClientDataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientDataGridView1_CellContentDoubleClick);
-            // 
-            // businessClientBindingSource
-            // 
-            this.businessClientBindingSource.DataSource = typeof(CRM.BusinessClient);
             // 
             // clearBtn
             // 
@@ -239,6 +235,10 @@
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = false;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // individualClientBindingSource
+            // 
+            this.individualClientBindingSource.DataSource = typeof(CRM.IndividualClient);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -264,13 +264,13 @@
             this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
             this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
             // 
-            // nipDataGridViewTextBoxColumn
+            // PESEL
             // 
-            this.nipDataGridViewTextBoxColumn.DataPropertyName = "Nip";
-            this.nipDataGridViewTextBoxColumn.HeaderText = "Nip";
-            this.nipDataGridViewTextBoxColumn.Name = "nipDataGridViewTextBoxColumn";
+            this.PESEL.DataPropertyName = "Pesel";
+            this.PESEL.HeaderText = "PESEL";
+            this.PESEL.Name = "PESEL";
             // 
-            // BusinessClientForm
+            // IndividualClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,12 +291,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.locationBox);
             this.Controls.Add(this.phoneBox);
-            this.Controls.Add(this.nipBox);
+            this.Controls.Add(this.peselBox);
             this.Controls.Add(this.nameBox);
-            this.Name = "BusinessClientForm";
+            this.Name = "IndividualClientForm";
             this.Text = "Client";
             ((System.ComponentModel.ISupportInitialize)(this.ClientDataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessClientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.individualClientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,7 +305,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox nameBox;
-        private System.Windows.Forms.TextBox nipBox;
+        private System.Windows.Forms.TextBox peselBox;
         private System.Windows.Forms.TextBox phoneBox;
         private System.Windows.Forms.TextBox locationBox;
         private System.Windows.Forms.Label label1;
@@ -320,12 +320,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button delBtn;
         private System.Windows.Forms.DataGridView ClientDataGridView1;
-        private System.Windows.Forms.BindingSource businessClientBindingSource;
         private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.BindingSource individualClientBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nipDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PESEL;
     }
 }
