@@ -31,6 +31,8 @@
             this.BClientBtn = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.PClientBtn = new System.Windows.Forms.Button();
+            this.ProductBtn = new System.Windows.Forms.Button();
+            this.OrderBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BClientBtn
@@ -61,12 +63,42 @@
             this.PClientBtn.UseVisualStyleBackColor = false;
             this.PClientBtn.Click += new System.EventHandler(this.PClientBtn_Click);
             // 
+            // ProductBtn
+            // 
+            this.ProductBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.ProductBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProductBtn.Location = new System.Drawing.Point(12, 51);
+            this.ProductBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.ProductBtn.Name = "ProductBtn";
+            this.ProductBtn.Size = new System.Drawing.Size(118, 23);
+            this.ProductBtn.TabIndex = 3;
+            this.ProductBtn.TabStop = false;
+            this.ProductBtn.Text = "Products";
+            this.ProductBtn.UseVisualStyleBackColor = false;
+            this.ProductBtn.Click += new System.EventHandler(this.ProductBtn_Click);
+            // 
+            // OrderBtn
+            // 
+            this.OrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(181)))), ((int)(((byte)(211)))));
+            this.OrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OrderBtn.Location = new System.Drawing.Point(145, 51);
+            this.OrderBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.OrderBtn.Name = "OrderBtn";
+            this.OrderBtn.Size = new System.Drawing.Size(118, 23);
+            this.OrderBtn.TabIndex = 4;
+            this.OrderBtn.TabStop = false;
+            this.OrderBtn.Text = "Order";
+            this.OrderBtn.UseVisualStyleBackColor = false;
+            this.OrderBtn.Click += new System.EventHandler(this.OrderBtn_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(224)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(776, 413);
+            this.ClientSize = new System.Drawing.Size(289, 100);
+            this.Controls.Add(this.OrderBtn);
+            this.Controls.Add(this.ProductBtn);
             this.Controls.Add(this.PClientBtn);
             this.Controls.Add(this.BClientBtn);
             this.Name = "Main";
@@ -80,6 +112,8 @@
         private System.Windows.Forms.Button BClientBtn;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button PClientBtn;
+        private System.Windows.Forms.Button ProductBtn;
+        private System.Windows.Forms.Button OrderBtn;
     }
 }
 

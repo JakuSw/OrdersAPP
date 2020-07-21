@@ -45,13 +45,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.delBtn = new System.Windows.Forms.Button();
             this.ClientDataGridView1 = new System.Windows.Forms.DataGridView();
-            this.businessClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clearBtn = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.businessClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ClientDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessClientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -220,11 +220,8 @@
             this.ClientDataGridView1.Name = "ClientDataGridView1";
             this.ClientDataGridView1.Size = new System.Drawing.Size(563, 177);
             this.ClientDataGridView1.TabIndex = 18;
+            this.ClientDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientDataGridView1_CellContentDoubleClick);
             this.ClientDataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientDataGridView1_CellContentDoubleClick);
-            // 
-            // businessClientBindingSource
-            // 
-            this.businessClientBindingSource.DataSource = typeof(CRM.BusinessClient);
             // 
             // clearBtn
             // 
@@ -269,6 +266,10 @@
             this.nipDataGridViewTextBoxColumn.DataPropertyName = "Nip";
             this.nipDataGridViewTextBoxColumn.HeaderText = "Nip";
             this.nipDataGridViewTextBoxColumn.Name = "nipDataGridViewTextBoxColumn";
+            // 
+            // businessClientBindingSource
+            // 
+            this.businessClientBindingSource.DataSource = typeof(CRM.BusinessClient);
             // 
             // BusinessClientForm
             // 

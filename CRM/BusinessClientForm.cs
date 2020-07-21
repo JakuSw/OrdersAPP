@@ -44,15 +44,26 @@ namespace CRM
             }
 
         }
+        private int idCreator()
+        {
+            if (ClientsList.Count > 0)
+            {
+                return ClientsList.Last().Id + 1;
 
+            }
+            else
+            {
+                return 1;
+            }
+        }
         private void addBtn_Click(object sender, EventArgs e)
         {
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
             {
                 if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "" && ClientsList.Exists(x => x.Nip == nipBox.Text) == false)
                 {
-                    ClientsList.Add(new BusinessClient(ClientsList.Count + 1, nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
-                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
+                    ClientsList.Add(new BusinessClient(idCreator(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
+                    string csv = string.Format("{0},{1},{2},{3},{4}\n", ClientsList.Last().Id, ClientsList.Last().Name, ClientsList.Last().Nip, ClientsList.Last().Phone, ClientsList.Last().Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
                     MessageBox.Show("Client added to database");
                     ClientsList[ClientsList.Count-1].ShowData();
@@ -74,8 +85,8 @@ namespace CRM
             {
                 if (nameBox.Text != "" && nipBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "")
                 {
-                    ClientsList.Add(new BusinessClient((ClientsList.Count + 1), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
-                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text);
+                    ClientsList.Add(new BusinessClient(idCreator(), nameBox.Text, nipBox.Text, phoneBox.Text, locationBox.Text));
+                    string csv = string.Format("{0},{1},{2},{3},{4}\n", ClientsList.Last().Id, ClientsList.Last().Name, ClientsList.Last().Nip, ClientsList.Last().Phone, ClientsList.Last().Location);
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
                     MessageBox.Show("Client added to database");                    
                     nameBox.Text = "";

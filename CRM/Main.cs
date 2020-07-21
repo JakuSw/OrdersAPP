@@ -28,5 +28,18 @@ namespace CRM
             IndividualClientForm ClientWindow = new IndividualClientForm();
             ClientWindow.Show();
         }
+
+        private void ProductBtn_Click(object sender, EventArgs e)
+        {
+            ProductForm ProductWindow = new ProductForm();
+            ProductWindow.Show();
+
+        }
+
+        private void OrderBtn_Click(object sender, EventArgs e)
+        {
+            OrderForm OrderWindow = new OrderForm();
+            OrderWindow.Show();
+        }
     }
 }

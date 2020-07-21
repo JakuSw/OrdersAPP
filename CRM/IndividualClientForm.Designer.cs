@@ -45,13 +45,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.delBtn = new System.Windows.Forms.Button();
             this.ClientDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.PESEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clearBtn = new System.Windows.Forms.Button();
-            this.individualClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PESEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.individualClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ClientDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.individualClientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -220,7 +220,14 @@
             this.ClientDataGridView1.Name = "ClientDataGridView1";
             this.ClientDataGridView1.Size = new System.Drawing.Size(563, 177);
             this.ClientDataGridView1.TabIndex = 18;
+            this.ClientDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientDataGridView1_CellContentDoubleClick);
             this.ClientDataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientDataGridView1_CellContentDoubleClick);
+            // 
+            // PESEL
+            // 
+            this.PESEL.DataPropertyName = "Pesel";
+            this.PESEL.HeaderText = "PESEL";
+            this.PESEL.Name = "PESEL";
             // 
             // clearBtn
             // 
@@ -235,10 +242,6 @@
             this.clearBtn.Text = "Clear";
             this.clearBtn.UseVisualStyleBackColor = false;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
-            // 
-            // individualClientBindingSource
-            // 
-            this.individualClientBindingSource.DataSource = typeof(CRM.IndividualClient);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -264,11 +267,9 @@
             this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
             this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
             // 
-            // PESEL
+            // individualClientBindingSource
             // 
-            this.PESEL.DataPropertyName = "Pesel";
-            this.PESEL.HeaderText = "PESEL";
-            this.PESEL.Name = "PESEL";
+            this.individualClientBindingSource.DataSource = typeof(CRM.IndividualClient);
             // 
             // IndividualClientForm
             // 

@@ -19,9 +19,9 @@ namespace CRM
         public IndividualClientForm()
         {
             InitializeComponent();
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv"))
             {
-                string path = AppDomain.CurrentDomain.BaseDirectory + @"\data.csv";
+                string path = AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv";
                 string[] lines = System.IO.File.ReadAllLines(path);
                 if (lines[0] != "")
                 {
@@ -44,16 +44,27 @@ namespace CRM
             }
 
         }
+        private int idCreator()
+        {
+            if (ClientsList.Count > 0)
+            {
+                return ClientsList.Last().Id + 1;
 
+            }
+            else
+            {
+                return 1;
+            }
+        }
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv"))
             {
-                if (nameBox.Text != "" && peselBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "" && ClientsList.Exists(x => x.Pesel == peselBox.Text) == false)
+                if (nameBox.Text != "" && peselBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "" && Static.Validation(peselBox.Text) &&ClientsList.Exists(x => x.Pesel == peselBox.Text) == false)
                 {
-                    ClientsList.Add(new IndividualClient(ClientsList.Count + 1, nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text));
-                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text);
-                    File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
+                    ClientsList.Add(new IndividualClient(idCreator(), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text));
+                    string csv = string.Format("{0},{1},{2},{3},{4}\n", ClientsList.Last().Id, ClientsList.Last().Name, ClientsList.Last().Pesel, ClientsList.Last().Phone, ClientsList.Last().Location);
+                    File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv", csv);
                     MessageBox.Show("Client added to database");
                     ClientsList[ClientsList.Count-1].ShowData();
                     nameBox.Text = "";
@@ -63,7 +74,11 @@ namespace CRM
                 }
                 else if (ClientsList.Exists(x => x.Pesel == peselBox.Text) == true)
                 {
-                    MessageBox.Show("This Pesel is already in database");
+                    MessageBox.Show("This PESEL is already in database");
+                }
+                else if (Static.Validation(peselBox.Text) == false)
+                {
+                    MessageBox.Show("Invalid PESEL");
                 }
                 else
                 {
@@ -74,9 +89,9 @@ namespace CRM
             {
                 if (nameBox.Text != "" && peselBox.Text != "" && phoneBox.Text != "" && locationBox.Text != "")
                 {
-                    ClientsList.Add(new IndividualClient((ClientsList.Count + 1), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text));
-                    string csv = string.Format("{0},{1},{2},{3},{4}\n", (ClientsList.Count).ToString(), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text);
-                    File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", csv);
+                    ClientsList.Add(new IndividualClient(idCreator(), nameBox.Text, peselBox.Text, phoneBox.Text, locationBox.Text));
+                    string csv = string.Format("{0},{1},{2},{3},{4}\n", ClientsList.Last().Id, ClientsList.Last().Name, ClientsList.Last().Pesel, ClientsList.Last().Phone, ClientsList.Last().Location);
+                    File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv", csv);
                     MessageBox.Show("Client added to database");                    
                     nameBox.Text = "";
                     peselBox.Text = "";
@@ -118,7 +133,7 @@ namespace CRM
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);
                 }
             }
-            File.Replace(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", AppDomain.CurrentDomain.BaseDirectory + @"\databackup.csv");
+            File.Replace(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv", AppDomain.CurrentDomain.BaseDirectory +@"\clientdatabackup.csv");
             MessageBox.Show("Database updated");      
             var source = new BindingSource(ClientsList, null);
             ClientDataGridView1.DataSource = source;
@@ -133,7 +148,7 @@ namespace CRM
 
         private void delBtn_Click(object sender, EventArgs e)
         {
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\data.csv"))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv"))
             {
                 if (ClientsList.Exists(x => x.Pesel == peselBox.Text))
                 {
@@ -145,7 +160,7 @@ namespace CRM
                         csv = string.Format("{0},{1},{2},{3},{4}\n", item.Id, item.Name, item.Pesel, item.Phone, item.Location);
                         File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", csv);
                     }
-                    File.Replace(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", AppDomain.CurrentDomain.BaseDirectory + @"\data.csv", AppDomain.CurrentDomain.BaseDirectory + @"\databackup.csv");
+                    File.Replace(AppDomain.CurrentDomain.BaseDirectory + @"\temp.csv", AppDomain.CurrentDomain.BaseDirectory + @"\clientdata.csv", AppDomain.CurrentDomain.BaseDirectory +@"\clientdatabackup.csv");
                     MessageBox.Show("Client ");
                     peselBox.Text = "";
                 }
